@@ -7,8 +7,9 @@ População: 12325000
 Área: 1521.11 km²
 PIB: 699.28 bilhões de reais
 Número de Pontos Turísticos: 50
+*/
 
-Criar um programa em C que permita ao usuário inserir os dados de duas cartas do Super Trunfo.
+/*Criar um programa em C que permita ao usuário inserir os dados de duas cartas do Super Trunfo.
 Para cada carta, o usuário deverá fornecer as seguintes informações:
 
 
@@ -20,32 +21,6 @@ População: O número de habitantes da cidade. Tipo: int
 PIB: O Produto Interno Bruto da cidade. Tipo: float
 Número de Pontos Turísticos: A quantidade de pontos turísticos na cidade. Tipo: int
 */
-
-/*Calcular a Densidade Populacional: Divida a população da cidade pela sua área. 
-O resultado será a densidade populacional, que representa o número de habitantes por quilômetro quadrado. 
-Armazene esse valor em uma variável do tipo float.
- 
-Calcular o PIB per Capita: Divida o PIB da cidade pela sua população. 
-O resultado será o PIB per capita, que indica a riqueza média por pessoa na cidade. 
-Armazene esse valor em uma variável do tipo float.
- 
-Exibir os Resultados: Além de exibir as informações lidas do usuário (como no nível básico), 
-seu programa também deve exibir a densidade populacional e o PIB per capita calculados para cada cidade. 
-Formate os valores de ponto flutuante com duas casas decimais.
-
-Exemplo de Saída:
-
-Carta 1:
-
-Estado: A
-Código: A01
-Nome da Cidade: São Paulo
-População: 12325000
-Área: 1521.11 km²
-PIB: 699.28 bilhões de reais
-Número de Pontos Turísticos: 50
-Densidade Populacional: 8102.47 hab/km²
-PIB per Capita: 56724.32 reais*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -62,7 +37,8 @@ int main(){
 	int numpontoturistico;
 	float densipop;
 	float pibpercap;
-
+	float superpoder;
+	float inversodensipop;
 	
 	char estado2 [30];
 	char codcarta2 [3];
@@ -73,11 +49,21 @@ int main(){
 	int numpontoturistico2;
 	float densipop2;
 	float pibpercap2;
+	float superpoder2;
+	float inversodensipop2;
+	
+	int resultado_populacao;
+	int resultado_area;
+	int resultado_pib;
+	int resultado_numpontoturistico;
+	int resultado_densipop;
+	int resultado_pibpercap;
+	int resultado_superpoder;
 	
 	printf("Bem vindo ao SUPER TRUNFO\n");
 	printf("************************************************************************\n");	
 	
-	//entrada e armazenagem de dados CARTA 1
+	//entrada e armazenagem de dados CARTA 1 ***********************************************************************************************************************
 	printf("\nINFORME OS DADOS DA [CARTA 1]");
 	printf("\nEstado (Informe uma letra de 'A' a 'H'): ");
 	scanf("%s", estado);
@@ -96,8 +82,12 @@ int main(){
 	
 	densipop=populacao/area; //calculo densidade populacional CARTA 1
 	pibpercap=pib/populacao; //pib per capita
+	
+	inversodensipop= 1.0 / densipop; //calcular o inverso na densidade populacionarl CARTA 1
+	superpoder= (float) populacao + area + pib + numpontoturistico + pibpercap + inversodensipop; //calcular SUPER PODER - CARTA 1 !!!!! está convertendo tudo em FLOAT
+	
 
-	//entrada e armazenagem de dados CARTA 2
+	//entrada e armazenagem de dados CARTA 2 **************************************************************************************************************************
 	printf("\n\nINFORME OS DADOS DA [CARTA 2]");
 	printf("\nEstado (Informe uma letra de 'A' a 'H'): ");
 	scanf("%s", estado2);
@@ -117,7 +107,10 @@ int main(){
 	densipop2=populacao2/area2; //calculo densidade populacional CARTA 2
 	pibpercap2=pib2/populacao2; //pib per capita
 	
-	printf("************************************************************************\n");	
+	inversodensipop2= 1.0 / densipop2; //calcular o inverso na densidade populacionarl CARTA 2
+	superpoder2= (float) populacao2 + area2 + pib2 + numpontoturistico2 + pibpercap2 + inversodensipop2; //calcular SUPER PODER - CARTA 2 !!!!! está convertendo tudo em FLOAT
+	
+	printf("************************************************************************\n");	//Impressão das CARTAS
 	//impressão CARTA 1
 	printf("\n\nCARTA 1");
 	printf("\nEstado: %s", estado);
@@ -129,8 +122,8 @@ int main(){
 	printf("\nNúmero de Pontos Turísticos: %d", numpontoturistico);
 	printf("\nDensidade Populacional: %.2f km²", densipop);
 	printf("\nPIB per Capita: %.2f", pibpercap);
+	printf("\nSuper Poder: %.2f", superpoder); //impressão SUPER PODER CARTA 1
 
-	
 	//impressão CARTA 2
 	printf("\n\nCARTA 2");
 	printf("\nEstado: %s", estado2);
@@ -141,7 +134,72 @@ int main(){
 	printf("\nPIB: %.2f", pib2);
 	printf("\nNúmero de Pontos Turísticos: %d", numpontoturistico2);
 	printf("\nDensidade Populacional: %.2f km²", densipop2);
-	printf("\nPIB per Capita: %.2f\n\n\n", pibpercap2);
+	printf("\nPIB per Capita: %.2f", pibpercap2);
+	printf("\nSuper Poder: %.2f", superpoder2); //impressão SUPER PODER CARTA 2
+	
+	//COMPARAÇÕES CARTA 1 e CARTA 2 para obter VERDADEIRO (1) ou FALSO (0)
+	resultado_populacao=populacao>populacao2;
+	resultado_area=area>area2;
+	resultado_pib=pib>pib2;
+	resultado_numpontoturistico=numpontoturistico>numpontoturistico2;
+	resultado_densipop=densipop>densipop2;
+	resultado_pibpercap=pibpercap>pibpercap2;
+	resultado_superpoder=superpoder>superpoder2;
+	
+	printf("\n************************************************************************\n\n\n");	//Impressão da COMPARAÇÃO --IMPRIME O TEXTO DO VENCEDOR
+	printf("COMPARAÇÂO DE CARTAS:\n");
+	
+	printf("\nPopulação:");
+	if (resultado_populacao == 1) {
+        printf("Carta 1 venceu (1)");
+    } else {
+        printf("Carta 2 venceu (0)");
+    }
+    
+    printf("\nÁrea:");
+	if (resultado_area == 1) {
+        printf("Carta 1 venceu (1)");
+    } else {
+        printf("Carta 2 venceu (0)");
+    }
+    
+    printf("\nPIB:");
+	if (resultado_pib == 1) {
+        printf("Carta 1 venceu (1)");
+    } else {
+        printf("Carta 2 venceu (0)");
+    }
+    
+    printf("\nPontos Turísticos:");
+	if (resultado_numpontoturistico == 1) {
+        printf("Carta 1 venceu (1)");
+    } else {
+        printf("Carta 2 venceu (0)");
+    }
+    
+    printf("\nDensidade Populacional:");
+	if (resultado_densipop == 1) {
+        printf("Carta 1 venceu (1)");
+    } else {
+        printf("Carta 2 venceu (0)");
+    }
+    
+    printf("\nPIB per Capita:");
+	if (resultado_pibpercap == 1) {
+        printf("Carta 1 venceu (1)");
+    } else {
+        printf("Carta 2 venceu (0)");
+    }
+    
+    printf("\nSuper Poder:");
+	if (resultado_superpoder == 1) {
+        printf("Carta 1 venceu (1)");
+    } else {
+        printf("Carta 2 venceu (0)");
+    }
+
+printf("\n\n\n");//espaço para o FIM
+	
 	
 	
 }
